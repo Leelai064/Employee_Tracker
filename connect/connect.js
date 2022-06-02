@@ -1,5 +1,5 @@
 // my sql installation
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 // Found a setup guide that helped me in W3schools
 module.exports = connect;
