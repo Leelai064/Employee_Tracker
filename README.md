@@ -7,6 +7,8 @@ By utilizing Node.js, Inquirer, and MYSQL this application was created from scra
 
 # Github Repository Access
 
+https://github.com/Leelai064/Employee_Tracker
+
 # Installation Guide
 
 1. First the user needs to clone the Employee_Tracker repository from my Github. (The link to the github is provided above). 
