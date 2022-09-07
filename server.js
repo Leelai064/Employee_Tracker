@@ -8,7 +8,6 @@ const connection = mysql2.createConnection({
     port: 3001,
     user: "root",
     password: "rootroot", //Enter your MySQL password here.
-    // use gitignore on this. 
     database: "employeeTrackDB"
 });
 
@@ -16,7 +15,7 @@ const connection = mysql2.createConnection({
 //throw error
 
 connection.connect(function (err) {
-    if (err) throw err;
+    // if (err) throw err;
     console.log("Connected as ID " + connection.threadId);
     console.clear();
     console.log("   OOPS THE DATABASE SEEMED TO HAVE DISCONNECTED!!! ");
@@ -96,7 +95,7 @@ function roles() {
 function departments() {
     db.query('SELECT * FROM department', function (err, res) {
         if (err) throw err;
-        console.table("Deparments", res)
+        console.table("Deparments", res);
         runEmployeeTrackerdb();
     })
 };
@@ -124,7 +123,7 @@ function employeeAdditon() {
             {
                 name: 'role',
                 type: 'list',
-                choices: function () {
+                userChoices: function (res) {
                     var roleArray = [];
                     for (let i = 0; i < res.length; i++) {
                         roleArray.push(res[i].title);

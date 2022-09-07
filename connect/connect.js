@@ -8,16 +8,16 @@ connection = mysql.createConnection({
     host:'localhost',
     user:"root",
     password: 'rootroot',
-    database: '',
+    database: 'employee',
     mutipleStatements:true
 
 });
 
-confirm.connect(function(err){
-    if (err){
-        console.log((err));
-        return;
-    }
+// confirm.connect(function(err){
+//     if (err){
+//         console.log((err));
+//         return;
+//     }
 
-    console.log()
-});
+//     console.log()
+// });
