@@ -20,3 +20,4 @@ https://github.com/Leelai064/Employee_Tracker
 4. To view the data base run: run mysql -u root -p. Follow the promopts the terminal to access the information needed for this application.
 
 # Website Walkthrough
+
