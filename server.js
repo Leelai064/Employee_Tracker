@@ -1,29 +1,12 @@
 //import mysql, inquirer
 
-const mysql2 = require('mysql');
 const inquirer = require('inquirer');
- require('console.table');
-const connection = mysql2.createConnection({
-    host: "localhost",
-    port: 3001,
-    user: "root",
-    password: "rootroot", //Enter your MySQL password here.
-    database: "employeeTrackDB"
-});
+require('console.table');
+
+const db =require('./db')
 
 
-//throw error
-
-connection.connect(function (err) {
-    // if (err) throw err;
-    console.log("Connected as ID " + connection.threadId);
-    console.clear();
-    console.log("   OOPS THE DATABASE SEEMED TO HAVE DISCONNECTED!!! ");
-    employeerendering();
-});
-
-
-function employeerendering() {
+function employeeRendering() {
     inquirer
         .prompt({
             name: 'action',
@@ -63,13 +46,8 @@ function employeerendering() {
                 case 'Update employee role':
                     employeeUpdating();
                     break;
-                case 'Delete an employee':
-                    deleteEmployee();
-                    break;
-                case 'EXIT':
-                    exit();
-                    break;
                 default:
+                    exit();
                     break;
             }
         })
@@ -77,27 +55,20 @@ function employeerendering() {
 
 //connect to database
 function employees() {
-    db.query('SELECT * FROM employee', function (err, res) {
-        if (err) throw err
-        console.table(res)
-        choices();
-    });
+    db.getAllEmployees().then(([data])=>{
+        console.table(data)
+    }).then(()=> employeeRendering())
 }
 function roles() {
-    db.query('Select * FROM role', function (err, res) {
-        if (err) throw err;
-        inquirer
-        console.table(res)
-        userChoices();
-    })
+    db.getAllRoles().then(([data])=>{
+        console.table(data)
+    }).then(()=> employeeRendering())
 }
 
 function departments() {
-    db.query('SELECT * FROM department', function (err, res) {
-        if (err) throw err;
-        console.table("Deparments", res);
-        runEmployeeTrackerdb();
-    })
+    db.getAllDepts().then(([data])=>{
+        console.table(data)
+    }).then(()=> employeeRendering())
 };
 
 //Adding Employees, Roles, and Departments
@@ -231,10 +202,11 @@ function employeeUpdating(){
 }
 function exit() {
     console.log("Employee Tracker has been deployed and you have opted to exit!");
-    connection.end();
+  process.exit()
 }
 
 
 
+employeeRendering()
 
 

@@ -4,25 +4,25 @@ CREATE DATABASE employee_db;
 USE employee_db;
 
 -- Create a role, employee/,manager, and department insertion for the user
-CREATE TABLE departments(
+CREATE TABLE department(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    department_name VARCHAR(25)
+    name VARCHAR(25)
 );
 
-CREATE TABLE roles(
+CREATE TABLE role(
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30),
-    department_id INT,
     salary DECIMAL(8,2),
-    FOREIGN KEY(department_id) REFERENCES departments(id)
+    department_id INT,
+    FOREIGN KEY(department_id) REFERENCES department(id)
 );
 
-CREATE TABLE employees(
+CREATE TABLE employee(
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL, 
     last_name VARCHAR(30) NOT NULL,
+    role_id INT,
+    FOREIGN KEY(role_id) REFERENCES role(id),
     manager_id INT,
-    roles_id INT,
-    FOREIGN KEY(manager_id) REFERENCES employees(id),
-    FOREIGN KEY(roles_id) REFERENCES roles(id)
+    FOREIGN KEY(manager_id) REFERENCES employee(id)
 );
