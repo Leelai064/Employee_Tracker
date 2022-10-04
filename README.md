@@ -21,4 +21,8 @@ https://github.com/Leelai064/Employee_Tracker
 
 ## Website Walkthrough
 
-![Demo](./assets/terminalDemo.gif)
+![Demo](./assets/Demo.gif)
+
+* To see a more enlarged version of the gif attatched to this README.md file please click the link listed below. If you have any questions please feel free to reach out to me.
+
+Google Drive Link Access: https://drive.google.com/file/d/1r9h3OvACpgJ-89SEMgxV1uRW3kJXhzf4/view
